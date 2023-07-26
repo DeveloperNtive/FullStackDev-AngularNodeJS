@@ -1,0 +1,30 @@
+<div>
+    <div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label>Email:</label>
+                <input type="email" formControlName="email" required>
+                <div
+                    *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+                    <div *ngIf="loginForm.get('email')?.errors?.['required']">El email es requerido.</div>
+                    <div *ngIf="loginForm.get('email')?.errors?.['email']">El email no es válido.</div>
+                </div>
+            </div>
+
+            <div>
+                <label>Password:</label>
+                <input type="password" formControlName="password" required>
+                <div
+                    *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                    <div *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
+                    <div *ngIf="loginForm.get('password')?.errors?.['minlength']">La contraseña debe ser mayor o igual a 8</div>
+                    <div *ngIf="loginForm.get('password')?.errors?.['maxlength']">La contraseña debe ser menor o igual a 10</div>
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+        </form>
+    </div>
+    <span *ngIf="error">{{error}}</span>
+    <div><a routerLink="/signup">Sign Up</a></div>
+</div>
