@@ -1,30 +1,52 @@
-<div>
+<div class="mt-3">
+    <div class="text-center">
+        <img src="../../assets/images/imageLogin.png" alt="" style="width: 300px;height: 300px;" class="img-fluid">
+    </div><!--IMAGEN-->
     <div>
+        <div class="text-center">
+            <h1>Easy Media</h1>
+            <h5>Now, share is easy</h5>
+            <h2>Sign In</h2>
+        </div>
+        <div></div>
+    </div><!--tittle-->
+    <div class="mb-3">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div>
-                <label>Email:</label>
-                <input type="email" formControlName="email" required>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email" required>
                 <div
                     *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
-                    <div *ngIf="loginForm.get('email')?.errors?.['required']">El email es requerido.</div>
-                    <div *ngIf="loginForm.get('email')?.errors?.['email']">El email no es válido.</div>
+                    <div class="errorInput" *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</div>
+                    <div class="errorInput" *ngIf="loginForm.get('email')?.errors?.['email']">Please provide a valid
+                        email</div>
                 </div>
             </div>
 
-            <div>
-                <label>Password:</label>
-                <input type="password" formControlName="password" required>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password" required>
                 <div
                     *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
-                    <div *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
-                    <div *ngIf="loginForm.get('password')?.errors?.['minlength']">La contraseña debe ser mayor o igual a 8</div>
-                    <div *ngIf="loginForm.get('password')?.errors?.['maxlength']">La contraseña debe ser menor o igual a 10</div>
+                    <div class="errorInput" *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es
+                        requerida.</div>
+                    <div class="errorInput" *ngIf="loginForm.get('password')?.errors?.['minlength']">La contraseña debe
+                        ser mayor o igual a
+                        8</div>
+                    <div class="errorInput" *ngIf="loginForm.get('password')?.errors?.['maxlength']">La contraseña debe
+                        ser menor o igual a
+                        10</div>
                 </div>
             </div>
-
-            <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-signin" [disabled]="loginForm.invalid">SIGN IN</button>
+            </div>
         </form>
+    </div><!--FORMULARIO-->
+    <div class="text-center mb-2">
+        <span class="errorServer" *ngIf="error">{{error}}</span>
     </div>
-    <span *ngIf="error">{{error}}</span>
-    <div><a routerLink="/signup">Sign Up</a></div>
+    <div class="router mb-3">
+        <span style="color: #b2afbe;">Don't have an account?</span><a routerLink="/signup">Sign Up here</a>
+    </div><!--DONT HAVE ACCOUNT-->
 </div>

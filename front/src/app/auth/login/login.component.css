@@ -1,3 +1,51 @@
-.auth-background{
-    background-color: #9b8adb;
+div h1 {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+div h5 {
+  color: #48e3be;
+  margin-bottom: 0px;
+}
+
+div h2 {
+  color: white;
+  font-weight: 400;
+}
+
+div label {
+  font-weight: bold;
+}
+
+div a {
+  color: #48e3be;
+}
+
+.btn-signin {
+  border: none;
+  color: white;
+  width: 100%;
+  border-radius: 20px;
+  background: rgb(88, 187, 219);
+  background: linear-gradient(
+    90deg,
+    rgba(88, 187, 219, 1) 0%,
+    rgba(198, 69, 169, 1) 35%
+  );
+}
+
+.router {
+  width: 70%;
+  float: right;
+  text-align: end;
+}
+
+.errorInput {
+  color: red;
+}
+
+.errorServer {
+  color: red;
+  text-align: center;
 }
