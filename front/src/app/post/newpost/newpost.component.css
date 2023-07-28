@@ -1,0 +1,80 @@
+div h1 {
+  font-size: 30px;
+  font-family: 'Lato';
+  font-weight: 800;
+  color: white;
+}
+
+div label {
+  font-family: 'lato';
+  font-weight: 700;
+  font-size: 15px;
+}
+
+div input,
+textarea {
+  border-radius: 16px;
+  border: 1px solid #5f5e5e;
+  resize: none;
+  font-family: 'Lato';
+  font-size: 15px;
+}
+
+input::placeholder {
+  color: #b7b7b7;
+}
+textarea::placeholder {
+  color: #b7b7b7;
+}
+
+.btn-signin {
+  border: none;
+  color: white;
+  width: 90px;
+  border-radius: 20px;
+  background: rgb(88, 187, 219);
+  background: linear-gradient(
+    90deg,
+    rgba(88, 187, 219, 1) 0%,
+    rgba(198, 69, 169, 1) 35%
+  );
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid #5f5e5e;
+}
+.card-header {
+  color: #ebebeb;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 16px 16px 0px 0px;
+  background-color: #58bcdb;
+}
+.card-body {
+  height: 120px;
+  color: #ebebeb;
+  font-family: 'Lato';
+  font-size: 14px;
+  background-color: #666666;
+  overflow-y: scroll;
+}
+
+.card-footer {
+  background-color: #666666;
+  border-radius: 0px 0px 16px 16px;
+}
+
+.fecha {
+  font-family: 'Lato';
+  color: #ebebeb;
+  font-size: 12px;
+}
+
+.usuario {
+  font-family: 'Lato';
+  color: #ebebeb;
+  font-weight: 700;
+  font-size: 14px;
+}

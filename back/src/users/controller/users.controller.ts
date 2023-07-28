@@ -64,12 +64,12 @@ export class UserController {
       } else {
         return response
           .status(HttpStatus.BAD_REQUEST)
-          .send('Usuario o contraseña no coninciden!');
+          .send('Invalid Email or Password');
       }
     } catch (error) {
       return response
         .status(HttpStatus.BAD_REQUEST)
-        .send('Usuario o contraseña no coninciden!');
+        .send('Invalid Email or Password');
     }
   }
 }

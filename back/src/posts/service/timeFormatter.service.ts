@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class TimeFormatter {
+
   dateFormatter(fecha: Date): string {
     const day =
       fecha.getDate().toString().split('').length < 2
@@ -14,6 +15,7 @@ export class TimeFormatter {
     const year = fecha.getFullYear();
     return `${day}/${month}/${year}`; //dd/mm/aaaa
   }
+  
   hourFormatter(fecha: Date): string {
     const hour =
       fecha.getHours() < 12

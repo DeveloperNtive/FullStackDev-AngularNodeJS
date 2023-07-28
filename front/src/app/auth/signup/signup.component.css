@@ -1,0 +1,30 @@
+div a {
+  color: #48e3be;
+}
+
+div label {
+  font-weight: 700;
+}
+
+div a {
+  color: #48e3be;
+}
+
+.btn-signup {
+  border: none;
+  color: white;
+  width: 100%;
+  border-radius: 20px;
+  background: rgb(88, 187, 219);
+  background: linear-gradient(
+    90deg,
+    rgba(88, 187, 219, 1) 0%,
+    rgba(198, 69, 169, 1) 35%
+  );
+}
+
+.router {
+  width: 70%;
+  float: right;
+  text-align: end;
+}

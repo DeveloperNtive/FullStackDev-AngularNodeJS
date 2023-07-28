@@ -1,45 +1,59 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" formControlName="fullName" required>
-        <div
-            *ngIf="registerForm.get('fullName')?.invalid && (registerForm.get('fullName')?.dirty || registerForm.get('fullName')?.touched)">
-            <div *ngIf="registerForm.get('fullName')?.errors?.['required']">Full Name is required.</div>
+<div>
+    <app-header [witdh]="'73.29px'" [height]="'73.97px'" [marginTop]="'28px'"></app-header>
+</div>
+<div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" formControlName="fullName" required>
+            <div
+                *ngIf="registerForm.get('fullName')?.invalid && (registerForm.get('fullName')?.dirty || registerForm.get('fullName')?.touched)">
+                <div *ngIf="registerForm.get('fullName')?.errors?.['required']">Full Name is required.</div>
+            </div>
         </div>
-    </div>
 
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" required>
-        <div
-            *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
-            <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
-            <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+            <div
+                *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+                <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+                <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+            </div>
         </div>
-    </div>
 
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password" required>
-        <div
-            *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
-            <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
-            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">La contraseña debe ser mayor o igual a 8.</div>
-            <div *ngIf="registerForm.get('password')?.errors?.['maxlength']">La contraseña debe ser menor o igual a 10.</div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" formControlName="password" required>
+            <div
+                *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+                <div *ngIf="registerForm.get('password')?.errors?.['minlength']">La contraseña debe ser mayor o igual a
+                    8.</div>
+                <div *ngIf="registerForm.get('password')?.errors?.['maxlength']">La contraseña debe ser menor o igual a
+                    10.</div>
+            </div>
         </div>
-    </div>
 
-    <div>
-        <label>Confirm Password:</label>
-        <input type="password" formControlName="confirmPassword" required>
-        <div
-            *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)">
-            <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</div>
-            <div *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">La contraseña debe ser mayor o igual a 8.</div>
-            <div *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">La contraseña debe ser menor o igual a 10.</div>
-            <div *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match.</div>
+        <div class="mb-5">
+            <label for="confirmPassword" class="form-label">Confirm Password:</label>
+            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" required>
+            <div
+                *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)">
+                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.
+                </div>
+                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">La contraseña debe ser mayor o
+                    igual a 8.</div>
+                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">La contraseña debe ser menor o
+                    igual a 10.</div>
+                <div *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match.</div>
+            </div>
         </div>
-    </div>
-
-    <button type="submit" [disabled]="registerForm.invalid">Submit</button>
-</form>
+        <div class="text-center mb-4">
+            <button type="submit" class="btn btn-signup" [disabled]="registerForm.invalid">SIGN UP</button>
+        </div>
+    </form>
+    <div class="router mb-3">
+        <span style="color: #b2afbe;">Already have an account? </span><a routerLink="/login">Login</a>
+    </div><!--DONT HAVE ACCOUNT-->
+</div>

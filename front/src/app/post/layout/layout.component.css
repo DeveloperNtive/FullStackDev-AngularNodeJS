@@ -1,0 +1,11 @@
+.auth-background {
+  background-color: #9b8adb;
+  overflow: hidden;
+}
+
+span {
+  color: #0e2248;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 15px;
+}

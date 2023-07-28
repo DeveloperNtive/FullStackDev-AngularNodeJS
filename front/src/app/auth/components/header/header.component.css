@@ -1,0 +1,22 @@
+div h1 {
+  color: white;
+  font-weight: 800;
+  font-family: 'Lato';
+  font-size: 30px;
+  margin-bottom: 6px;
+}
+
+div h5 {
+  color: #48e3be;
+  font-weight: 700;
+  font-family: 'Lato';
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+div h2 {
+  color: white;
+  font-weight: 400;
+  font-family: 'Lato';
+  font-size: 20px;
+}

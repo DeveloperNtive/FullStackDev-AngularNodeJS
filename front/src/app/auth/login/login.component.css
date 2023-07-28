@@ -1,21 +1,5 @@
-div h1 {
-  color: white;
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-div h5 {
-  color: #48e3be;
-  margin-bottom: 0px;
-}
-
-div h2 {
-  color: white;
-  font-weight: 400;
-}
-
 div label {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 div a {

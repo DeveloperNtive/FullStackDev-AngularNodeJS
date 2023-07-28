@@ -8,9 +8,14 @@ import { NewpostComponent } from './post/newpost/newpost.component';
 import { PostRoutingModule } from './post/post-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModuleModule } from './shared-module/shared-module.module';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, NewpostComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    NewpostComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    SharedModuleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

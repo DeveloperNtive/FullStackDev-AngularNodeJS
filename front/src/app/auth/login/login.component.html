@@ -1,15 +1,5 @@
 <div class="mt-3">
-    <div class="text-center">
-        <img src="../../assets/images/imageLogin.png" alt="" style="width: 300px;height: 300px;" class="img-fluid">
-    </div><!--IMAGEN-->
-    <div>
-        <div class="text-center">
-            <h1>Easy Media</h1>
-            <h5>Now, share is easy</h5>
-            <h2>Sign In</h2>
-        </div>
-        <div></div>
-    </div><!--tittle-->
+    <app-header [witdh]="'215px'" [height]="'217px'" [marginTop]="'80px'"></app-header>
     <div class="mb-3">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
@@ -47,6 +37,6 @@
         <span class="errorServer" *ngIf="error">{{error}}</span>
     </div>
     <div class="router mb-3">
-        <span style="color: #b2afbe;">Don't have an account?</span><a routerLink="/signup">Sign Up here</a>
+        <span style="color: #b2afbe;">Don't have an account? </span><a routerLink="/signup">Sign Up here</a>
     </div><!--DONT HAVE ACCOUNT-->
 </div>

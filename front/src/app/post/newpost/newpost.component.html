@@ -1,1 +1,46 @@
-<p>newpost works!</p>
+<div>
+    <div class="text-center mt-4">
+        <h1>Create message</h1>
+    </div><!--titulo-->
+    <div class="container mb-5 mt-4">
+        <form action="" [formGroup]="message">
+            <div class="mb-3">
+                <label for="tittleMessage" class="form-label">Title message</label>
+                <input type="text" formControlName="title" class="form-control" id="tittleMessage"
+                    placeholder="Your post title" maxlength="30">
+                <div id="passwordHelpBlock" class="form-text" style="float: right;">
+                    {{message.get('title')?.value.length}}/30
+                </div>
+            </div>
+            <div class="mb-5">
+                <label for="messages" class="form-label">Messages</label>
+                <textarea class="form-control" formControlName="messages" id="messages" rows="3"
+                    placeholder="Create message for share with your friends." maxlength="300"></textarea>
+                <div id="passwordHelpBlock" class="form-text" style="float: right;">
+                    {{message.get('messages')?.value.length}}/300
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-signin">SHARE</button>
+            </div>
+        </form>
+    </div><!--formulario-->
+    <div class="card mx-3 mb-4">
+        <div class="card-header">
+            {{message.get('title')?.value.length>0?message.get('title')?.value.lengt:"Your post title"}}
+        </div>
+        <div class="card-body">
+            <p>{{message.get('messages')?.value}}</p>
+        </div>
+        <div class="card-footer text-body-secondary">
+            <div class="row">
+                <div class="col fecha">
+                    <span>{{fecha}}</span>
+                </div>
+                <div class="col usuario" style="text-align: end;">
+                    <span>usuario</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

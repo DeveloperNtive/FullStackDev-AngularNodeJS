@@ -9,9 +9,9 @@ import { AllpostComponent } from './allpost/allpost.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ErropageComponent } from './erropage/erropage.component';
 import { FormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,9 @@ import {MatButtonModule} from '@angular/material/button';
     PostRoutingModule,
     MegaMenuModule,
     FormsModule,
-    MatButtonModule, MatMenuModule, MatIconModule
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   providers: [],
 })
