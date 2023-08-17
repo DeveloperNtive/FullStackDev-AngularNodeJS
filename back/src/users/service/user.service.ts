@@ -18,7 +18,9 @@ export class UserService {
     private jwt: JwtService,
   ) {}
 
-  async getUserId(email: string): Promise<{id:string, fullName: string, email: string}> {
+  async getUserId(
+    email: string,
+  ): Promise<{ id: string; fullName: string; email: string }> {
     return await this.userRepository.getUserId(email);
   }
 
@@ -31,32 +33,44 @@ export class UserService {
   async registerUser(user: RegisterUser): Promise<boolean> {
     const { fullName, email, passWord } = user;
     const hash = await this.cryptPassword(passWord);
-    return this.userRepository.registerUser({
+    return await this.userRepository.registerUser({
       fullName,
       email,
       passWord: hash,
     });
   }
 
-  async loginUser(login: LoginUser): Promise<string> {
+  async loginUser(
+    login: LoginUser,
+  ): Promise<{ fullName: string; token: string }> {
+    //Extraigo lo que necesito del request
     const { email, password } = login;
-    //Verificar que el usuario exista
     try {
-      const existeUsuario = await this.userRepository.loginUser(email);
+      //Verificar que el usuario exista
+      const { fullName, passwordDB } = await this.userRepository.loginUser(
+        email,
+      );
+
       //Verificar que las contraseñas coincidan
       const coincidenciaDeContraseña = await bcrypt.compare(
         password,
-        String(existeUsuario),
+        passwordDB,
       );
 
-      if (!existeUsuario) {
-        throw new Error(`User or Password incorrect!`);
+      //Si el usuario no existe envia error
+      if (!passwordDB) {
+        throw new Error(`Invalid Email or Password`);
       }
+      //Si las contraseñas no coinciden envia error
       if (!coincidenciaDeContraseña) {
-        throw new Error(`User or Password incorrect!`);
+        throw new Error(`Invalid Email or Password`);
       }
-      //Enviar token de inicio de sesion
-      return await this.jwt.signAsync({ email }, this.jwtOptions);
+      //Crea el token
+      const token = await this.jwt.signAsync({ fullName, email }, this.jwtOptions);
+      return {
+        fullName,
+        token,
+      };
     } catch (error) {
       throw error;
     }

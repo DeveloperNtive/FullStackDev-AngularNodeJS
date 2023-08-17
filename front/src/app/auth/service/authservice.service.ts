@@ -8,6 +8,7 @@ import { ErrorResponse } from '../interface/errorresponse.interface';
 })
 export class AuthserviceService {
   baseUrl: string = 'http://localhost:3000';
+  name!: string;
   constructor(private httpClient: HttpClient) {}
 
   singup(fullName: string, email: string, passWord: string) {
@@ -21,12 +22,9 @@ export class AuthserviceService {
     );
   }
   login(email: string, password: string) {
-    return this.httpClient.post<LoginResponse | ErrorResponse>(
-      `${this.baseUrl}/user/login`,
-      {
-        email,
-        password,
-      }
-    );
+    return this.httpClient.post<LoginResponse>(`${this.baseUrl}/user/login`, {
+      email,
+      password,
+    });
   }
 }

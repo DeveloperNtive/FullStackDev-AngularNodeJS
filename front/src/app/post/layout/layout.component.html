@@ -9,12 +9,12 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Oscar Montes</a></li><!--Nombre del cliente-->
+                <li><span class="dropdown-item" href="#">{{name | titlecase}}</span></li><!--Nombre del cliente-->
                 <hr style="margin: 0px 10% 0px 10%; width: 130px;">
-                <li><a class="dropdown-item" href="#">Create publication</a></li>
-                <li><a class="dropdown-item" href="#">My Publications</a></li>
-                <li><a class="dropdown-item" href="#">See All Publications</a></li>
-                <li style="background-color: #DDDADA;"><a class="dropdown-item" href="#">Logout</a></li>
+                <li><a class="dropdown-item" routerLink="/post/create-post" [state]="name">Create publication</a></li>
+                <li><a class="dropdown-item" routerLink="/post/my-post" [state]="name">My Publications</a></li>
+                <li><a class="dropdown-item" routerLink="/post/all-post" [state]="name">See All Publications</a></li>
+                <li style="background-color: #DDDADA;"><a class="dropdown-item" routerLink="/auth/login">Logout</a></li>
             </ul>
         </div>
     </div>

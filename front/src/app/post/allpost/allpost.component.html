@@ -1,1 +1,20 @@
-<p>allpost works!</p>
+<div class="container">
+    <post-header [titleHeader]="'All publications'"></post-header>
+    <div> <!--Div formulario-->
+        <div class="mt-3">
+            <div class="d-flex justify-content-between">
+                <label for="wordsToSearch" class="label-control">Words to Search?</label>
+                <span id="showingCountPost">Showing 2/15 post</span>
+            </div>
+            <input type="search" class="form-control" id="wordsToSearch" placeholder="word to search" #inputSearch
+                (change)="searchWordInput()" >
+        </div>
+        <div class="mt-3">
+            <label for="wordsToSearch" class="label-control">Date Select</label>
+            <input type="date" class="form-control" id="wordsToSearch" (change)="dateInput()" #inputDate>
+        </div>
+    </div>
+    <div> <!--Div resultados posts-->
+
+    </div>
+</div>

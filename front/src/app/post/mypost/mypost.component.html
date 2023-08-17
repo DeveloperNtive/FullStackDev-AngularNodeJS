@@ -1,1 +1,50 @@
-<p>mypost works!</p>
+<div>
+    <post-header [titleHeader]="'My Publications'"></post-header>
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <label for="postDate" class="form-label">Date Select</label>
+            <span id="showingCountPost">Showing {{postsViews.length}}/{{nPosts}} post</span>
+        </div>
+        <input type="date" class="form-control" id="postDate" [formControl]="date" (change)="filterPostsByDate()"
+            #dateInput>
+    </div><!--Date Filter-->
+    <div class="post-container">
+        <div *ngIf="postsViews.length > 0; else cardsResult">
+            <div class="container" *ngFor="let post of postsViews">
+                <post-postcard [cardClass]="'mx-3 mt-2'" [textHeader]="post.tittle" [textBody]="post.message"
+                    [textFecha]="post.hour+' '+post.date" [textName]="post.autor"></post-postcard>
+            </div><!--Posts-->
+        </div>
+        <ng-template #cardsResult>
+            <div class="container text-center mt-5">
+                <div class="mb-4">
+                    <img src="../../../assets/images/nothingToSeeHere.png">
+                </div>
+                <div>
+                    <span id="nothingToSeeHere">Nothing to see here</span>
+                </div>
+            </div>
+        </ng-template>
+        <div class="footer" *ngIf="postsViews.length > 0">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Previous" (click)="previous()">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" (click)="showPosts(page)">{{pagination+1}}</a></li>
+                    <li class="page-item"><a class="page-link" (click)="showPosts(page+1)">{{pagination+2}}</a></li>
+                    <li class="page-item"><a class="page-link" (click)="showPosts(page+2)">{{pagination+3}}</a></li>
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next" (click)="next()">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div><!--Paginator footer-->
+    </div>
+</div>

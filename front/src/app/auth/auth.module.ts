@@ -10,18 +10,15 @@ import { AuthserviceService } from './service/authservice.service';
 import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 @NgModule({
-  declarations: [
-    SignupComponent,
-    LayoutComponent,
-    SignupComponent,
-  ],
+  declarations: [SignupComponent, LayoutComponent, SignupComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModuleModule
+    SharedModuleModule,
   ],
   providers: [AuthserviceService],
+  bootstrap: [LayoutComponent],
 })
 export class AuthModule {}

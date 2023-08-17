@@ -24,3 +24,10 @@ export interface IErrorResponseMyPost {
   statusCode: string;
   message: string;
 }
+
+export interface Post {
+  data: IMyPost[];
+  currentPage: number;
+  totalPages: number;
+  hasNextPage: boolean;
+}

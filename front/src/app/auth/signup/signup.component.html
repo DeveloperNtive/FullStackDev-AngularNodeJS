@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="mb-5">
+        <div class="mb-1">
             <label for="confirmPassword" class="form-label">Confirm Password:</label>
             <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" required>
             <div
@@ -49,7 +49,10 @@
                 <div *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match.</div>
             </div>
         </div>
-        <div class="text-center mb-4">
+        <div class="text-center">
+            <span style="color: red">{{passwordError}}</span>
+        </div>
+        <div class="text-center mb-4 mt-5">
             <button type="submit" class="btn btn-signup" [disabled]="registerForm.invalid">SIGN UP</button>
         </div>
     </form>

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
     title: 'FullStackDev - Auth',
   },
@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./post/post.module').then((m) => m.PostModule),
     title: 'FullStackDev - Post',
   },
-  // { path: '', redirectTo: 'post', pathMatch: 'full' },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
 ];
 
 @NgModule({

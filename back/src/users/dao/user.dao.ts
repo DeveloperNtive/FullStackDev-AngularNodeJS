@@ -30,14 +30,19 @@ export class UserDao {
       await createdUser.save();
       return true;
     } catch (error) {
-      return false;
+      throw error;
     }
   }
 
-  async loginUser(email: string): Promise<string> {
+  async loginUser(
+    email: string,
+  ): Promise<{ fullName: string; passwordDB: string }> {
     const userFound = await this.userModel.find({ email }).exec();
     if (userFound.length > 0) {
-      return userFound[0].passWord;
+      return {
+        fullName: userFound[0].fullName,
+        passwordDB: userFound[0].passWord,
+      };
     }
     return;
   }

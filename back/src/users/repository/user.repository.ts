@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UserDao } from '../dao/user.dao';
 import { RegisterUser } from '../interface/registerUser.interface';
-import { ResponseUser } from '../interface/responseUser.interface';
-import { ErrorCreation } from '../interface/ErrorCreation.interface';
-import { LoginUser } from '../interface/loginUser.interface';
 
 @Injectable()
 export class UserRepository {
@@ -17,7 +14,7 @@ export class UserRepository {
     return await this.userDao.registerUser(user);
   }
 
-  loginUser(login: string): Promise<string | ErrorCreation> {
-    return this.userDao.loginUser(login);
+  loginUser(email: string): Promise<{ fullName: string; passwordDB: string }> {
+    return this.userDao.loginUser(email);
   }
 }

@@ -5,16 +5,16 @@ import { Model } from 'mongoose';
 import { NewPost } from '../interface/newPost.interface';
 import { IAllPost, IMyPost } from '../interface/myPost.interface';
 import { User } from 'src/users/schema/user.schema';
-import { TimeFormatter } from '../service/timeFormatter.service';
+import * as moment from 'moment';
 
 @Injectable()
 export class PostDao {
   constructor(
     @InjectModel(Post.name) private postModel: Model<Post>,
     @InjectModel(User.name) private userModel: Model<User>,
-    private timeFormatter: TimeFormatter,
   ) {}
   async newPost(post: NewPost): Promise<any> {
+    console.log(Date.now());
     const postModel = new this.postModel({
       ...post,
       date: Date.now(),
@@ -33,8 +33,8 @@ export class PostDao {
         return {
           tittle: post.tittle,
           message: post.message,
-          date: this.timeFormatter.dateFormatter(fecha),
-          hour: this.timeFormatter.hourFormatter(fecha),
+          date: moment(fecha).format('DD/MM/yyyy'),
+          hour: moment(fecha).format('hh:mm A'),
           autor,
         };
       });
@@ -54,8 +54,8 @@ export class PostDao {
           return {
             tittle: post.tittle,
             message: post.message,
-            date: this.timeFormatter.dateFormatter(fecha),
-            hour: this.timeFormatter.hourFormatter(fecha),
+            date: moment(fecha).format('D/MM/yyyy'),
+            hour: moment(fecha).format('hh:mm A'),
             autor: user.fullName,
           };
         }),

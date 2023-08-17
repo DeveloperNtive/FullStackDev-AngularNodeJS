@@ -1,5 +1,5 @@
 export interface LoginResponse {
   statusCode: string;
-  email: string;
+  name: string;
   token: string;
 }

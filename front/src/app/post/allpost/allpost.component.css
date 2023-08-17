@@ -1,0 +1,8 @@
+div input {
+  border-radius: 16px;
+}
+div span#showingCountPost {
+  font-family: 'Lato';
+  font-size: 12px;
+  color: #ebebeb;
+}

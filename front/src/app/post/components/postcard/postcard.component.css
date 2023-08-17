@@ -1,0 +1,37 @@
+.card {
+  border-radius: 16px;
+  border: 1px solid #5f5e5e;
+}
+.card-header {
+  color: #ebebeb;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 16px 16px 0px 0px;
+  background-color: #58bcdb;
+}
+.card-body {
+  height: 120px;
+  color: #ebebeb;
+  font-family: 'Lato';
+  font-size: 14px;
+  background-color: #666666;
+  overflow-y: scroll;
+}
+
+.card-footer {
+  background-color: #666666;
+  border-radius: 0px 0px 16px 16px;
+}
+.fecha {
+  font-family: 'Lato';
+  color: #ebebeb;
+  font-size: 12px;
+}
+
+.usuario {
+  font-family: 'Lato';
+  color: #ebebeb;
+  font-weight: 700;
+  font-size: 14px;
+}

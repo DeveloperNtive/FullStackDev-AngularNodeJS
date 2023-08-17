@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { MessagesController } from './messages/controllers/messages.controller';
 import { PostController } from './posts/controller/posts.controller';
 import { UserController } from './users/controller/users.controller';
 import { UserService } from './users/service/user.service';
@@ -24,7 +23,6 @@ import { PostModel } from './posts/model/post.model';
 import { JwtService } from '@nestjs/jwt';
 import 'dotenv/config';
 import { PostMiddleware } from './posts/middleware/post.middleware';
-import { TimeFormatter } from './posts/service/timeFormatter.service';
 
 @Module({
   imports: [
@@ -32,12 +30,11 @@ import { TimeFormatter } from './posts/service/timeFormatter.service';
     MongooseModule.forFeature([UserModel]),
     MongooseModule.forFeature([PostModel]),
   ],
-  controllers: [UserController, MessagesController, PostController],
+  controllers: [UserController, PostController],
   providers: [
     UserService,
     PostService,
     JwtService,
-    TimeFormatter,
     UserRepository,
     PostRepository,
     UserDao,

@@ -3,14 +3,6 @@ export interface NewPost {
   message: string;
   userId: string;
 }
-export interface IResponsePost {
-  statusCode: string;
-  token: string;
-  post: {
-    tittle: string;
-    message: string;
-  };
-}
 
 export interface IErrorResponsePost {
   statusCode: string;

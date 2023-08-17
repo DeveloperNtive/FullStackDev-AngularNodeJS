@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthserviceService } from '../service/authservice.service';
 import { Router } from '@angular/router';
 
@@ -40,17 +36,15 @@ export class LoginComponent implements OnInit {
       )
       .subscribe({
         next: (value) => {
-          console.log(value);
-          this.router.navigateByUrl('/post')
+          localStorage.setItem('token', value.token);
+          localStorage.setItem('name', value.name);
+          this.router.navigateByUrl('/post/create-post');
+          this.authService.name = value.name;
         },
         error: (err) => {
-          this.error = err.error;
-          console.log(err);
+          this.error = 'Invalid Email or Password';
         },
       });
-    // Aquí puedes realizar las acciones necesarias con el email y la contraseña, como enviarlos a un servicio o mostrarlos en la consola
-    console.log(this.loginForm.value.email);
-    console.log(this.loginForm.value.password);
 
     // Reinicia el formulario
     this.loginForm.reset();

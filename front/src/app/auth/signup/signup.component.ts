@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
+  passwordError: string = '';
 
   constructor(
     private loginService: AuthserviceService,
@@ -23,65 +24,67 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.registerForm = new FormGroup(
-      {
-        fullName: new FormControl('', Validators.required),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(10),
-        ]),
-        confirmPassword: new FormControl('', [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(10),
-        ]),
-      },
-      { validators: this.passwordMatchValidator }
-    );
-  }
-  markAllFieldsAsTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach((control) => {
-      if (control instanceof FormGroup) {
-        this.markAllFieldsAsTouched(control);
-      } else {
-        control.markAsTouched();
-      }
+    this.registerForm = new FormGroup({
+      fullName: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(10),
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(10),
+      ]),
     });
   }
 
   onSubmit() {
+    if (
+      this.registerForm.get('password')?.value !==
+      this.registerForm.get('confirmPassword')?.value
+    ) {
+      console.log('Las contraseñas no coinciden');
+      this.passwordError = 'Passwords does not match';
+      this.registerForm.reset({
+        fullName: this.registerForm.get('fullName')?.value,
+        email: this.registerForm.get('email')?.value,
+        password: '',
+        confirmPassword: '',
+      });
+    }
     if (this.registerForm.invalid) {
       return;
     }
-    this.loginService
-      .singup(
-        this.registerForm.get('fullName')?.value,
-        this.registerForm.get('email')?.value,
-        this.registerForm.get('password')?.value
-      )
-      .subscribe({
-        next: (value) => {
-          this.router.navigateByUrl('login');
-        },
-        error: (err) => {},
-      });
-    console.log(this.registerForm.value);
 
-    this.registerForm.reset();
-  }
-
-  passwordMatchValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [key: string]: boolean } | null => {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
-
-    if (password?.value !== confirmPassword?.value) {
-      return { passwordMismatch: true };
+    if (
+      this.registerForm.valid &&
+      this.registerForm.get('password')?.value ===
+        this.registerForm.get('confirmPassword')?.value
+    ) {
+      this.loginService
+        .singup(
+          this.registerForm.get('fullName')?.value,
+          this.registerForm.get('email')?.value,
+          this.registerForm.get('password')?.value
+        )
+        .subscribe({
+          next: (value) => {
+            this.registerForm.reset();
+            this.router.navigateByUrl('login');
+          },
+          error: (err) => {
+            console.log(err.error);
+            this.registerForm.reset({
+              fullName: this.registerForm.get('fullName')?.value,
+              email: '',
+              password: '',
+              confirmPassword: '',
+            });
+            this.passwordError = err.error;
+          },
+        });
     }
-
-    return null;
-  };
+  }
 }

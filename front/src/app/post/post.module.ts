@@ -4,19 +4,14 @@ import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
 import { MegaMenuModule } from 'primeng/megamenu';
 
-import { MypostComponent } from './mypost/mypost.component';
-import { AllpostComponent } from './allpost/allpost.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ErropageComponent } from './erropage/erropage.component';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { PostService } from './service/post.service';
 
 @NgModule({
   declarations: [
-    MypostComponent,
-    AllpostComponent,
     LayoutComponent,
     ErropageComponent,
   ],
@@ -25,10 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
     PostRoutingModule,
     MegaMenuModule,
     FormsModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PostService],
+  bootstrap: [LayoutComponent]
 })
 export class PostModule {}

@@ -9,12 +9,16 @@ import { PostRoutingModule } from './post/post-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModuleModule } from './shared-module/shared-module.module';
+import { MypostComponent } from './post/mypost/mypost.component';
+import { AllpostComponent } from './post/allpost/allpost.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NewpostComponent,
+    MypostComponent,
+    AllpostComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,7 @@ import { SharedModuleModule } from './shared-module/shared-module.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    SharedModuleModule,
+    SharedModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent],
